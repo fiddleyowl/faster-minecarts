@@ -1,4 +1,4 @@
-package com.github.ndrp.fasterminecarts.util;
+package com.philipzhan.fasterminecarts.util;
 
 import net.minecraft.block.AbstractRailBlock;
 import net.minecraft.block.BlockState;

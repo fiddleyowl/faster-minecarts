@@ -1,6 +1,6 @@
-package com.github.ndrp.fasterminecarts;
+package com.philipzhan.fasterminecarts;
 
-import com.github.ndrp.fasterminecarts.config.FasterMinecartsConfig;
+import com.philipzhan.fasterminecarts.config.FasterMinecartsConfig;
 
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.GsonConfigSerializer;

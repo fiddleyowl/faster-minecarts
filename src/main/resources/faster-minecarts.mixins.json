@@ -1,11 +1,11 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.github.ndrp.fasterminecarts.mixin",
-  "compatibilityLevel": "JAVA_8",
+  "package": "com.philipzhan.fasterminecarts.mixin",
+  "compatibilityLevel": "JAVA_16",
   "mixins": [
-  	"AbstractMinecartEntityMixin",
-  	"FurnaceMinecartEntityMixin"
+    "com.philipzhan.fasterminecarts.mixin.AbstractMinecartEntityMixin",
+    "com.philipzhan.fasterminecarts.mixin.FurnaceMinecartEntityMixin"
   ],
   "client": [
   ],

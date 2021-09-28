@@ -1,4 +1,4 @@
-package com.github.ndrp.fasterminecarts.mixin;
+package com.philipzhan.fasterminecarts.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
