@@ -50,7 +50,7 @@ Minecarts will automatically slow down at corners or on zigzag tracks to prevent
 
 Placing soul sand blocks or slime blocks beneath rails can force passing minecarts to run at vanilla speed, regardless of whether the minecart is in *vanilla mode* or not. 
 
-Especially for furnace minecarts, hoppers can also force a furnace minecart to run in *vanilla mode*. Other minecarts are not affected by this.
+Especially for storage minecarts(chest, hopper), hoppers can also force a furnace minecart to run in *vanilla mode*. Other minecarts are not affected by this.
 
 
 ## Requirements
