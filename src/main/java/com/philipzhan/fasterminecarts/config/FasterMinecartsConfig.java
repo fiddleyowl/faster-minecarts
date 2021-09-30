@@ -13,15 +13,15 @@ public class FasterMinecartsConfig implements ConfigData {
 
 	@ConfigEntry.Gui.Tooltip()
 	@ConfigEntry.Category("default")
-    public boolean automaticMinecartSlowDownBeforeCurvedRail = true;
+    public boolean automaticMinecartSlowDown = true;
 
 	@ConfigEntry.Gui.Tooltip()
 	@ConfigEntry.Category("default")
-	public boolean manualMinecartSlowDownOnSoulSand = true;
+	public boolean manualMinecartSlowDown = true;
 
 	@ConfigEntry.Gui.Tooltip()
 	@ConfigEntry.Category("default")
-	public boolean furnaceMinecartSlowDownOnHopper = true;
+	public boolean furnaceMinecartSlowDown = true;
 	
 	@ConfigEntry.Gui.Tooltip(count = 2)
 	@ConfigEntry.BoundedDiscrete(min = 8, max = 30)

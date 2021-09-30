@@ -23,7 +23,7 @@ public abstract class FurnaceMinecartEntityMixin extends AbstractMinecartEntityM
 	@Inject(method = "getMaxOffRailSpeed", at = @At("HEAD"), cancellable = true)
 	protected void onGetMaxOffRailSpeed(CallbackInfoReturnable<Double> cir) {
 
-		if (config.furnaceMinecartSlowDownOnHopper) {
+		if (config.furnaceMinecartSlowDown) {
 			BlockPos blockPos = this.getBlockPos();
 			BlockState state = this.world.getBlockState(blockPos);
 			BlockEntity entity = world.getBlockEntity(getBlockPos().down());

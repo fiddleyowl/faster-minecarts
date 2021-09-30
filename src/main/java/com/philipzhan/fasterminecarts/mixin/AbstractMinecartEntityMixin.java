@@ -42,9 +42,14 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 		BlockState state = this.world.getBlockState(blockPos);
 		Block under = world.getBlockState(getBlockPos().down()).getBlock();
 
-		// Return if above soul sand block
-		if (config.manualMinecartSlowDownOnSoulSand) {
+		// Return if above soul sand block or
+		if (config.manualMinecartSlowDown) {
 			if (!(state.getBlock() instanceof AbstractRailBlock) || under instanceof SoulSandBlock) {
+				cir.setReturnValue(getDefaultSpeed());
+				return;
+			}
+
+			if (!(state.getBlock() instanceof AbstractRailBlock) || under instanceof SlimeBlock) {
 				cir.setReturnValue(getDefaultSpeed());
 				return;
 			}
@@ -62,7 +67,7 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 			}
 		}
 
-		if (config.automaticMinecartSlowDownBeforeCurvedRail) {
+		if (config.automaticMinecartSlowDown) {
 			Vec3d v = this.getVelocity();
 
 			if (Math.abs(v.getX()) < 0.5 && Math.abs(v.getZ()) < 0.5) {
