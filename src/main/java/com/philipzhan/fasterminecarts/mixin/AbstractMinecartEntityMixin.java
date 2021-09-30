@@ -60,7 +60,7 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 			}
 		}
 
-		// Return if above soul sand block or
+		// Return if above soul sand blocks or slime blocks
 		if (config.manualMinecartSlowDown) {
 			if (!(state.getBlock() instanceof AbstractRailBlock) || under instanceof SoulSandBlock) {
 				cir.setReturnValue(getDefaultSpeed());
@@ -73,6 +73,7 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 			}
 		}
 
+		// Return if storage minecarts are on hopper
 		if (config.storageMinecartSlowDown) {
 			if (this.getMinecartType().equals(AbstractMinecartEntity.Type.CHEST) || this.getMinecartType().equals(AbstractMinecartEntity.Type.HOPPER)) {
 				BlockEntity entity = world.getBlockEntity(getBlockPos().down());
@@ -132,7 +133,7 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 
 		}
 
-		// If all above fails, accelerate.
+		// Fallback, accelerate
 		if (shouldAccelerate) {
 			cir.setReturnValue(getHighSpeed());
 		} else {

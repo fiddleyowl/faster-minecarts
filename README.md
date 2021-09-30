@@ -24,7 +24,7 @@ Similar to acceleration rails, replace diamonds with slime balls.
 ![](https://github.com/fiddleyowl/faster-minecarts/blob/master/Resources/deceleration-rail-recipe.png?raw=true)
 
 ## Usage
-Demonstration Video: [here](https://raw.githubusercontent.com/fiddleyowl/faster-minecarts/master/Resources/demo.mov)
+Demonstration Video: [here](https://raw.githubusercontent.com/fiddleyowl/faster-minecarts/master/Resources/demo.mp4)
 
 Minecarts are not accelerated by default. By placing acceleration rails, minecarts will start accelerating to given maximum speed (configure in ModMenu). By placing deceleration rails, minecarts will run at vanilla speed.
 * Acceleration rails set passed minecarts to *acceleration mode*, 2-3 acceleration rails are enough. There's no need to place too many of them.
