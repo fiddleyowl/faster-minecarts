@@ -1,0 +1,17 @@
+{
+    "text.autoconfig.fasterminecarts.title": "极速矿车",
+    "text.autoconfig.fasterminecarts.category.default": "通用",
+    "text.autoconfig.fasterminecarts.option.enableMod": "启用极速矿车",
+    "text.autoconfig.fasterminecarts.option.enableMod.@Tooltip": "启用极速矿车模组。",
+    "text.autoconfig.fasterminecarts.option.automaticMinecartSlowDown": "自动减速",
+    "text.autoconfig.fasterminecarts.option.automaticMinecartSlowDown.@Tooltip": "自动减速防止矿车在拐弯处脱轨。",
+    "text.autoconfig.fasterminecarts.option.manualMinecartSlowDown": "手动减速",
+    "text.autoconfig.fasterminecarts.option.manualMinecartSlowDown.@Tooltip": "在轨道下方放置灵魂沙或黏液块来手动减速。",
+    "text.autoconfig.fasterminecarts.option.storageMinecartSlowDown": "运输矿车减速",
+    "text.autoconfig.fasterminecarts.option.storageMinecartSlowDown.@Tooltip": "让运输矿车和漏斗矿车在漏斗上减速。",
+    "text.autoconfig.fasterminecarts.option.maxSpeed": "最高速度",
+    "text.autoconfig.fasterminecarts.option.maxSpeed.@Tooltip[0]": "调整最高速度 (米每秒)。",
+    "text.autoconfig.fasterminecarts.option.maxSpeed.@Tooltip[1]": "原版值为8，默认值为24。",
+    "block.fasterminecarts.acceleration_rail": "加速铁轨",
+    "block.fasterminecarts.deceleration_rail": "减速铁轨"
+}

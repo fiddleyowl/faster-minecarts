@@ -21,7 +21,7 @@ public class FasterMinecartsConfig implements ConfigData {
 
 	@ConfigEntry.Gui.Tooltip()
 	@ConfigEntry.Category("default")
-	public boolean furnaceMinecartSlowDown = true;
+	public boolean storageMinecartSlowDown = true;
 	
 	@ConfigEntry.Gui.Tooltip(count = 2)
 	@ConfigEntry.BoundedDiscrete(min = 8, max = 30)

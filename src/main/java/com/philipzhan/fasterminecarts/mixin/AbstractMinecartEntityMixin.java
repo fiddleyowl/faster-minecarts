@@ -5,15 +5,19 @@ import com.philipzhan.fasterminecarts.Blocks.DecelerationRailBlock;
 import com.philipzhan.fasterminecarts.util.MinecartUtility;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.HopperBlockEntity;
 import net.minecraft.block.enums.RailShape;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.vehicle.AbstractMinecartEntity;
+import net.minecraft.entity.vehicle.FurnaceMinecartEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -21,6 +25,8 @@ import com.philipzhan.fasterminecarts.config.FasterMinecartsConfig;
 
 @Mixin(AbstractMinecartEntity.class)
 public abstract class AbstractMinecartEntityMixin extends Entity {
+
+	@Shadow public abstract AbstractMinecartEntity.Type getMinecartType();
 
 	private boolean shouldAccelerate = false;
 
@@ -64,6 +70,17 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 			if (!(state.getBlock() instanceof AbstractRailBlock) || under instanceof SlimeBlock) {
 				cir.setReturnValue(getDefaultSpeed());
 				return;
+			}
+		}
+
+		if (config.storageMinecartSlowDown) {
+			if (this.getMinecartType().equals(AbstractMinecartEntity.Type.CHEST) || this.getMinecartType().equals(AbstractMinecartEntity.Type.HOPPER)) {
+				BlockEntity entity = world.getBlockEntity(getBlockPos().down());
+				// Return if above hopper block entity
+				if (!(state.getBlock() instanceof AbstractRailBlock) || entity instanceof HopperBlockEntity) {
+					cir.setReturnValue(getDefaultSpeed());
+					return;
+				}
 			}
 		}
 
@@ -125,7 +142,11 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 	}
 
 	public double getDefaultSpeed() {
-		return (this.isTouchingWater() ? 4.0D : 8.0D) / 20.0D;
+		if (this.getMinecartType().equals(AbstractMinecartEntity.Type.FURNACE)) {
+			return (this.isTouchingWater() ? 3.0D : 4.0D) / 20.0D;
+		} else {
+			return (this.isTouchingWater() ? 4.0D : 8.0D) / 20.0D;
+		}
 	}
 
 	public double getHighSpeed() {

@@ -31,7 +31,7 @@ Minecarts are not accelerated by default. By placing acceleration rails, minecar
 * Deceleration rails set passed minecarts to *vanilla mode*, 2-3 deceleration rails are enough.
 * Acceleration rails and deceleration rails must be powered to work.
 * Cross powering is not available. Acceleration rails, deceleration rails, and powered rails must be powered separately.
-* Acceleration rails can only accelerate minecarts that are already accelerated to vanilla full speed by powered rails. If you drive a minecart from regular rails to acceleration rails without being on powered rails, acceleration rails will only set your minecart to *acceleration mode*, but not accelerating your minecart.
+* Acceleration rails can only accelerate minecarts that are already accelerated to vanilla full speed by powered rails. If you drive a minecart from regular rails onto acceleration rails without being on powered rails, acceleration rails will only set your minecart to *acceleration mode*, but not accelerating your minecart.
 
 Minecarts will automatically slow down at corners or on zigzag tracks to prevent derailing. 
 * Your minecart may bounce back on walls when your track goes up. Place deceleration rails in advance to prevent this.
