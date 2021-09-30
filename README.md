@@ -12,9 +12,12 @@ If you don't like the way to toggle, you can also put a soul sand block under a 
 
 Everything can be configured in modmenu. Install for better experience!
 
-This mod requires **Fabric**.
+This mod requires **Fabric API** and **Cloth Config API**.
 
 ## Copyright
 This mod is a forked and improved version of [prathier/faster-minecarts](https://github.com/prathier/faster-minecarts).
+Original author: [neondrp](https://www.curseforge.com/members/neondrp).
 
+## License
+This mod is licensed under GPL-3.0 license. 
 
