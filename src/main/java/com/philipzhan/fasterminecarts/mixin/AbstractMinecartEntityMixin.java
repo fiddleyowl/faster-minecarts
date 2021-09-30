@@ -5,8 +5,6 @@ import com.philipzhan.fasterminecarts.Blocks.DecelerationRailBlock;
 import com.philipzhan.fasterminecarts.util.MinecartUtility;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.HopperBlockEntity;
 import net.minecraft.block.enums.RailShape;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -53,11 +51,15 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 		}
 
 		if (state.getBlock() instanceof DecelerationRailBlock) {
-			shouldAccelerate = false;
+			if (state.get(DecelerationRailBlock.POWERED)) {
+				shouldAccelerate = false;
+			}
 		}
 
 		if (state.getBlock() instanceof AccelerationRailBlock) {
-			shouldAccelerate = true;
+			if (state.get(AccelerationRailBlock.POWERED)) {
+				shouldAccelerate = true;
+			}
 		}
 
 		if (config.automaticMinecartSlowDownBeforeCurvedRail) {
@@ -72,37 +74,40 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 			final int additionalOffset = 1;
 			final int offset = (int) getHighSpeed() + additionalOffset;
 
-			AbstractRailBlock abstractRailBlock = (AbstractRailBlock) state.getBlock();
-			RailShape railShape = state.get(abstractRailBlock.getShapeProperty());
-			Vec3i nextRailOffset = MinecartUtility.getNextRailOffsetByVelocity(railShape, v);
+			if (state.getBlock() instanceof AbstractRailBlock abstractRailBlock) {
 
-			if (nextRailOffset == null) {
-				// it's a curved rail
-				cir.setReturnValue(getDefaultSpeed());
-				return;
-			}
+				RailShape railShape = state.get(abstractRailBlock.getShapeProperty());
+				Vec3i nextRailOffset = MinecartUtility.getNextRailOffsetByVelocity(railShape, v);
 
-			for (int i = 0; i < offset; i++) {
-				RailShape railShapeAtOffset = null;
-
-				railShapeAtOffset = MinecartUtility.getRailShapeAtOffset(
-						new Vec3i(nextRailOffset.getX() * i, 0, nextRailOffset.getZ() * i), blockPos, this.world);
-
-				if (railShapeAtOffset == null) {
-					cir.setReturnValue(getDefaultSpeed());
+				if (nextRailOffset == null) {
+					// it's a curved rail
+					cir.setReturnValue(getSlowSpeed());
 					return;
 				}
 
-				switch (railShapeAtOffset) {
-					case SOUTH_EAST:
-					case SOUTH_WEST:
-					case NORTH_WEST:
-					case NORTH_EAST:
-						cir.setReturnValue(getDefaultSpeed());
+				for (int i = 0; i < offset; i++) {
+					RailShape railShapeAtOffset = null;
+
+					railShapeAtOffset = MinecartUtility.getRailShapeAtOffset(
+							new Vec3i(nextRailOffset.getX() * i, 0, nextRailOffset.getZ() * i), blockPos, this.world);
+
+					if (railShapeAtOffset == null) {
+						cir.setReturnValue(getSlowSpeed());
 						return;
-					default:
+					}
+
+					switch (railShapeAtOffset) {
+						case SOUTH_EAST:
+						case SOUTH_WEST:
+						case NORTH_WEST:
+						case NORTH_EAST:
+							cir.setReturnValue(getSlowSpeed());
+							return;
+						default:
+					}
 				}
 			}
+
 		}
 
 		// If all above fails, accelerate.
@@ -111,6 +116,7 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 		} else {
 			cir.setReturnValue(getDefaultSpeed());
 		}
+
 	}
 
 	public double getDefaultSpeed() {
@@ -119,5 +125,9 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 
 	public double getHighSpeed() {
 		return config.maxSpeed / 20.0D;
+	}
+
+	public double getSlowSpeed() {
+		return 0.3;
 	}
 }

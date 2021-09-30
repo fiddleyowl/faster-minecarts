@@ -14,10 +14,20 @@ If you like the thought of building long railways connecting your world together
 ## Recipes
 ### Acceleration Rails
 You can make 6 acceleration rails with 6 diamonds, 1 redstone, and 1 stick.
+
 Feeling expensive? Go to YouTube and find tutorials for duplicating them!
+
+![](https://github.com/fiddleyowl/faster-minecarts/blob/master/Resources/acceleration-rail-recipe.png?raw=true)
 
 ### Deceleration Rails
 Similar to acceleration rails, replace diamonds with slime balls.
+
+![](https://github.com/fiddleyowl/faster-minecarts/blob/master/Resources/deceleration-rail-recipe.png?raw=true)
+
+## Usage
+Minecarts are not accelerated by default. By placing acceleration rails on your track, minecarts will start accelerating to given maximum speed (configure in ModMenu).
+
+To slow them down, place soul sand blocks under the track
 
 ## Requirements
 This mod is designed for Minecraft 1.17+, and requires **Fabric API** and **Cloth Config API**.
