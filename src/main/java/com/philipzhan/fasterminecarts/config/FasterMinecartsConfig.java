@@ -1,15 +1,11 @@
 package com.philipzhan.fasterminecarts.config;
 
-import jdk.jfr.Name;
-import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
-import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
-import me.sargunvohra.mcmods.autoconfig1u.annotation.ConfigEntry;
+import me.shedaniel.autoconfig.ConfigData;
+import me.shedaniel.autoconfig.annotation.Config;
+import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
-@Config(name = "faster-minecarts")
+@Config(name = "fasterminecarts")
 public class FasterMinecartsConfig implements ConfigData {
-	
-	@ConfigEntry.Gui.Excluded
-	public double slowSpeed = 0.3;
 
 	@ConfigEntry.Gui.Tooltip()
 	@ConfigEntry.Category("default")
@@ -20,7 +16,7 @@ public class FasterMinecartsConfig implements ConfigData {
     public boolean automaticMinecartSlowDown = true;
 	
 	@ConfigEntry.Gui.Tooltip()
-	@ConfigEntry.BoundedDiscrete(max = 12)
+	@ConfigEntry.BoundedDiscrete(min = 8, max = 30)
 	@ConfigEntry.Category("default")
-    public int maxSpeed = 12;
+    public int maxSpeed = 24;
 }

@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "fasterminecarts:acceleration_rail",
+    "fasterminecarts:deceleration_rail"
+  ]
+}

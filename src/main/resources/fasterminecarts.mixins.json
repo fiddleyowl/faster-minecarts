@@ -4,8 +4,8 @@
   "package": "com.philipzhan.fasterminecarts.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "com.philipzhan.fasterminecarts.mixin.AbstractMinecartEntityMixin",
-    "com.philipzhan.fasterminecarts.mixin.FurnaceMinecartEntityMixin"
+    "AbstractMinecartEntityMixin",
+    "FurnaceMinecartEntityMixin"
   ],
   "client": [
   ],

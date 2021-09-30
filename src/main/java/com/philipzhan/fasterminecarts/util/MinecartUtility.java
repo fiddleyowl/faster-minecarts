@@ -32,11 +32,29 @@ public class MinecartUtility {
 		
 		if (railShape == RailShape.EAST_WEST) {
 			double x = velocity.getX();
-			x = (x > 0) ? 1 : ((x == 0) ? 0 : -1);
+//			x = (x > 0) ? 1 : ((x == 0) ? 0 : -1);
+
+			if (x > 0) {
+				x = 1;
+			} else if (x == 0) {
+				x = 0;
+			} else {
+				x = -1;
+			}
+
 			return new Vec3i(x, 0, 0);
+
 		} else if (railShape == RailShape.NORTH_SOUTH) {
+
 			double z = velocity.getZ();
-			z = (z > 0) ? 1 : ((z == 0) ? 0 : -1);
+//			z = (z > 0) ? 1 : ((z == 0) ? 0 : -1);
+			if (z > 0) {
+				z = 1;
+			} else if (z == 0) {
+				z = 0;
+			} else {
+				z = -1;
+			}
 			return new Vec3i(0, 0, z);
 		}
 		return null;
