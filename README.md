@@ -25,6 +25,7 @@ Similar to acceleration rails, replace diamonds with slime balls.
 ![](https://github.com/fiddleyowl/faster-minecarts/blob/master/Resources/deceleration-rail-recipe.png?raw=true)
 
 ## Usage
+Demonstration Video: [here]()
 Minecarts are not accelerated by default. By placing acceleration rails on your track, minecarts will start accelerating to given maximum speed (configure in ModMenu).
 
 To slow them down, place soul sand blocks under the track

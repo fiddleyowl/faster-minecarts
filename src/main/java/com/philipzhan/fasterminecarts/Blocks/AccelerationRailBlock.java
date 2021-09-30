@@ -7,4 +7,5 @@ public class AccelerationRailBlock extends PoweredRailBlock {
     public AccelerationRailBlock(Settings settings) {
         super(settings);
     }
+
 }
