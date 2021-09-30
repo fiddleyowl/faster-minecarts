@@ -10,11 +10,12 @@
     "Philip"
   ],
   "contact": {
-    "homepage": "",
-    "sources": ""
+    "homepage": "https://github.com/fiddleyowl/faster-minecarts",
+    "sources": "https://github.com/fiddleyowl/faster-minecarts",
+    "issues": "https://github.com/fiddleyowl/faster-minecarts/issues"
   },
 
-  "license": "GNU GPL3",
+  "license": "GNU GPLv3",
   "icon": "assets/modid/icon.png",
 
   "environment": "*",
@@ -31,9 +32,8 @@
   ],
 
   "depends": {
-    "fabricloader": ">=0.11.3",
-    "minecraft": "1.17.x",
-    "clothconfig": "*"
+    "fabricloader": ">=0.11.6",
+    "minecraft": "1.17.x"
   },
   "suggests": {
     "modmenu": "*"

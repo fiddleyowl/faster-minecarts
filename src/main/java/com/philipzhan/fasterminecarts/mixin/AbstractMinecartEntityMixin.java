@@ -24,7 +24,7 @@ import com.philipzhan.fasterminecarts.config.FasterMinecartsConfig;
 @Mixin(AbstractMinecartEntity.class)
 public abstract class AbstractMinecartEntityMixin extends Entity {
 
-	private boolean shouldAccelerate = true;
+	private boolean shouldAccelerate = false;
 
 	FasterMinecartsConfig config = AutoConfig.getConfigHolder(FasterMinecartsConfig.class).getConfig();
 
