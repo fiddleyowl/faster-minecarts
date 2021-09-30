@@ -3,15 +3,22 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 
+[![](http://cf.way2muchnoise.eu/full_532511_downloads.svg)](http://www.curseforge.com/minecraft/mc-mods/faster-minecarts-2)
+[![](http://cf.way2muchnoise.eu/versions/532511.svg)](http://www.curseforge.com/minecraft/mc-mods/faster-minecarts-2)
+
+[![Requires Fabric API](https://i.imgur.com/Ol1Tcf8.png)](https://www.curseforge.com/minecraft/mc-mods/fabric-api)
+
 This mod aims to balance the speed of vanilla minecarts compared to the other means of transportation available.
 
 If you like the thought of building long railways connecting your world together, but feel that you are hampering yourself because the fastest horse can reach almost double the speed a vanilla minecart can while requiring close to no resources at the same time, then hopefully this mod can remedy that.
+
+This is a forked and remade version of [faster-minecarts](https://www.curseforge.com/minecraft/mc-mods/faster-minecarts) by [neondrp](https://www.curseforge.com/members/neondrp).
 
 ## Features
 * Increases the maximum speed of all vanilla minecarts from 8 m/s up to 30 m/s.
 * Automatic slowdown on corners to prevent potential derailing.
 * Acceleration rails and deceleration rails to manually toggle speed.
-* Support for per-block slowing with soul sand blocks or hoppers (furnace minecarts only).
+* Support for per-block slowing with soul sand blocks, slime blocks, or hoppers (storage minecarts only).
 * Flexible configuration with ModMenu.
 
 ## Recipes
@@ -28,7 +35,7 @@ Similar to acceleration rails, replace diamonds with slime balls.
 ![](https://github.com/fiddleyowl/faster-minecarts/blob/master/Resources/deceleration-rail-recipe.png?raw=true)
 
 ## Usage
-Demonstration Video: [here](https://raw.githubusercontent.com/fiddleyowl/faster-minecarts/master/Resources/demo.mp4)
+Demonstration Video: [here](https://raw.githubusercontent.com/fiddleyowl/faster-minecarts/master/Resources/demo.mp4).
 
 Minecarts are not accelerated by default. By placing acceleration rails, minecarts will start accelerating to given maximum speed (configure in ModMenu). By placing deceleration rails, minecarts will run at vanilla speed.
 * Acceleration rails set passed minecarts to *acceleration mode*, 2-3 acceleration rails are enough. There's no need to place too many of them.
@@ -50,9 +57,11 @@ Especially for furnace minecarts, hoppers can also force a furnace minecart to r
 This mod is designed for Minecraft 1.17+, and requires **Fabric API** and **Cloth Config API**.
 
 ## Copyright
-This mod is a forked and improved version of [prathier/faster-minecarts](https://github.com/prathier/faster-minecarts).
+This mod is a forked and improved version of [faster-minecarts](http://www.curseforge.com/minecraft/mc-mods/faster-minecarts).
 
 Original author: [neondrp](https://www.curseforge.com/members/neondrp).
+
+This mod is only published on [CurseForge](http://www.curseforge.com/minecraft/mc-mods/faster-minecarts-2).
 
 ## License
 This mod is licensed under GPL-3.0 license. 
