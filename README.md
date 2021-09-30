@@ -3,10 +3,10 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 
-[![](http://cf.way2muchnoise.eu/full_532511_downloads.svg)](http://www.curseforge.com/minecraft/mc-mods/faster-minecarts-2)
-[![](http://cf.way2muchnoise.eu/versions/532511.svg)](http://www.curseforge.com/minecraft/mc-mods/faster-minecarts-2)
+[![](http://cf.way2muchnoise.eu/full_532511_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/faster-minecarts-2)
+[![](http://cf.way2muchnoise.eu/versions/532511.svg)](https://www.curseforge.com/minecraft/mc-mods/faster-minecarts-2)
 
-[![Requires Fabric API](https://i.imgur.com/Ol1Tcf8.png)](https://www.curseforge.com/minecraft/mc-mods/fabric-api)
+[![Requires Fabric API](https://github.com/fiddleyowl/faster-minecarts/blob/master/Resources/Requires-Fabric-API.png?raw=true)](https://www.curseforge.com/minecraft/mc-mods/fabric-api)
 
 This mod aims to balance the speed of vanilla minecarts compared to the other means of transportation available.
 
@@ -15,8 +15,8 @@ If you like the thought of building long railways connecting your world together
 This is a forked and remade version of [faster-minecarts](https://www.curseforge.com/minecraft/mc-mods/faster-minecarts) by [neondrp](https://www.curseforge.com/members/neondrp).
 
 ## Features
-* Increases the maximum speed of all vanilla minecarts from 8 m/s up to 30 m/s.
-* Automatic slowdown on corners to prevent potential derailing.
+* Increases the maximum speed of all vanilla minecarts from 8 m/s to up to 30 m/s.
+* Automatic slowdown on corners to prevent derailing.
 * Acceleration rails and deceleration rails to manually toggle speed.
 * Support for per-block slowing with soul sand blocks, slime blocks, or hoppers (storage minecarts only).
 * Flexible configuration with ModMenu.
