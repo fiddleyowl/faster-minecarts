@@ -37,6 +37,8 @@
     "cloth-config2": "*"
   },
   "suggests": {
-    "modmenu": "*"
+    "modmenu": "*",
+    "malilib": "*",
+    "minihud": "*"
   }
 }
