@@ -23,6 +23,9 @@
     "main": [
       "com.philipzhan.fasterminecarts.FasterMinecarts"
     ],
+    "client": [
+      "com.philipzhan.fasterminecarts.FasterMinecartsClient"
+    ],
     "modmenu": [
       "com.philipzhan.fasterminecarts.config.FasterMinecartsModMenuIntegration"
     ]

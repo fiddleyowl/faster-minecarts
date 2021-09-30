@@ -17,7 +17,6 @@ public class FasterMinecarts implements ModInitializer {
 		ModItems.registerItems();
 		ModBlocks.registerBlocks();
 
-		// For transparency
-		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), ModBlocks.ACCELERATION_RAIL_BLOCK, ModBlocks.DECELERATION_RAIL_BLOCK);
 	}
+
 }
