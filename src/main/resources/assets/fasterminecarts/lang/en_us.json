@@ -1,4 +1,6 @@
 {
+    "modmenu.title.fasterminecarts": "Faster Minecarts",
+    "modmenu.descriptionTranslation.fasterminecarts": "Increases the speed of minecarts.",
     "text.autoconfig.fasterminecarts.title": "Faster Minecarts",
     "text.autoconfig.fasterminecarts.category.default": "General",
     "text.autoconfig.fasterminecarts.option.enableMod": "Enable Mod",
