@@ -28,6 +28,7 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 	@Shadow public abstract AbstractMinecartEntity.Type getMinecartType();
 
 	private boolean shouldAccelerate = false;
+	private double speedFactor = 1.0;
 
 	FasterMinecartsConfig config = AutoConfig.getConfigHolder(FasterMinecartsConfig.class).getConfig();
 
@@ -50,12 +51,14 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 		if (state.getBlock() instanceof AccelerationRailBlock) {
 			if (state.get(AccelerationRailBlock.POWERED)) {
 				shouldAccelerate = true;
+				speedFactor = -1;
 			}
 		}
 
 		if (state.getBlock() instanceof DecelerationRailBlock) {
 			if (state.get(DecelerationRailBlock.POWERED)) {
 				shouldAccelerate = false;
+				speedFactor = 1;
 			}
 		}
 
