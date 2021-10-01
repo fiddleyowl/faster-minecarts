@@ -15,6 +15,8 @@
     "text.autoconfig.fasterminecarts.option.maxSpeed.@Tooltip[0]": "调整最高可加速到的速度 (米每秒)。",
     "text.autoconfig.fasterminecarts.option.maxSpeed.@Tooltip[1]": "原版值为8，默认值为24。",
     "block.fasterminecarts.acceleration_rail": "加速轨道",
-    "block.fasterminecarts.deceleration_rail": "减速轨道"
+    "block.fasterminecarts.deceleration_rail": "减速轨道",
+    "block.fasterminecarts.precise_acceleration_rail": "精确加速轨道",
+    "block.fasterminecarts.precise_deceleration_rail": "精确减速轨道"
 
 }

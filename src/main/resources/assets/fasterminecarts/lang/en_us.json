@@ -15,5 +15,7 @@
     "text.autoconfig.fasterminecarts.option.maxSpeed.@Tooltip[0]": "Change the maximum speed (in meters per second).",
     "text.autoconfig.fasterminecarts.option.maxSpeed.@Tooltip[1]": "Vanilla value is 8, default value is 24.",
     "block.fasterminecarts.acceleration_rail": "Acceleration Rail",
-    "block.fasterminecarts.deceleration_rail": "Deceleration Rail"
+    "block.fasterminecarts.deceleration_rail": "Deceleration Rail",
+    "block.fasterminecarts.precise_acceleration_rail": "Precise Acceleration Rail",
+    "block.fasterminecarts.precise_deceleration_rail": "Precise Deceleration Rail"
 }
