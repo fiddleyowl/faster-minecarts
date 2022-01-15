@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/rail_flat",
+  "textures": {
+    "rail": "fasterminecarts:block/custom_speed_rail_two_on"
+  }
+}

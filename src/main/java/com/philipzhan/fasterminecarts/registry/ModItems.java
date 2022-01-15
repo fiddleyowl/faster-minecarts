@@ -14,16 +14,16 @@ public class ModItems {
     public static final BlockItem ACCELERATION_RAIL_ITEM = new BlockItem(ModBlocks.ACCELERATION_RAIL_BLOCK, new Item.Settings().rarity(Rarity.COMMON).group(ItemGroup.TRANSPORTATION));
     public static final BlockItem DECELERATION_RAIL_ITEM = new BlockItem(ModBlocks.DECELERATION_RAIL_BLOCK, new Item.Settings().rarity(Rarity.COMMON).group(ItemGroup.TRANSPORTATION));
 
-    public static final BlockItem PRECISE_ACCELERATION_RAIL_ITEM = new BlockItem(ModBlocks.PRECISE_ACCELERATION_RAIL_BLOCK, new Item.Settings().rarity(Rarity.COMMON).group(ItemGroup.TRANSPORTATION));
-    public static final BlockItem PRECISE_DECELERATION_RAIL_ITEM = new BlockItem(ModBlocks.PRECISE_DECELERATION_RAIL_BLOCK, new Item.Settings().rarity(Rarity.COMMON).group(ItemGroup.TRANSPORTATION));
+    public static final BlockItem CUSTOM_SPEED_RAIL_ONE_ITEM = new BlockItem(ModBlocks.CUSTOM_SPEED_RAIL_ONE_BLOCK, new Item.Settings().rarity(Rarity.COMMON).group(ItemGroup.TRANSPORTATION));
+    public static final BlockItem CUSTOM_SPEED_RAIL_TWO_ITEM = new BlockItem(ModBlocks.CUSTOM_SPEED_RAIL_TWO_BLOCK, new Item.Settings().rarity(Rarity.COMMON).group(ItemGroup.TRANSPORTATION));
 
 
     public static void registerItems() {
         Registry.register(Registry.ITEM, new Identifier(modId, "acceleration_rail"), ACCELERATION_RAIL_ITEM);
         Registry.register(Registry.ITEM, new Identifier(modId, "deceleration_rail"), DECELERATION_RAIL_ITEM);
 
-        Registry.register(Registry.ITEM, new Identifier(modId, "precise_acceleration_rail"), PRECISE_ACCELERATION_RAIL_ITEM);
-        Registry.register(Registry.ITEM, new Identifier(modId, "precise_deceleration_rail"), PRECISE_DECELERATION_RAIL_ITEM);
+        Registry.register(Registry.ITEM, new Identifier(modId, "custom_speed_rail_one"), CUSTOM_SPEED_RAIL_ONE_ITEM);
+        Registry.register(Registry.ITEM, new Identifier(modId, "custom_speed_rail_two"), CUSTOM_SPEED_RAIL_TWO_ITEM);
     }
 
 }

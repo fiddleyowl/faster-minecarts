@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/rail_flat",
-  "textures": {
-    "rail": "fasterminecarts:block/precise_deceleration_rail_on"
-  }
-}

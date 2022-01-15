@@ -29,25 +29,21 @@ public class FasterMinecartsConfig implements ConfigData {
 	@ConfigEntry.Category("general")
     public int maxSpeed = 24;
 
-	@ConfigEntry.Gui.Tooltip(count = 4)
-	@ConfigEntry.Category("preciseControl")
-	public boolean preciseValueMode = true;
+	@ConfigEntry.Gui.Tooltip(count = 3)
+	@ConfigEntry.Category("customControl")
+	public int customSpeedOne = 15;
 
 	@ConfigEntry.Gui.Tooltip(count = 3)
-	@ConfigEntry.Category("preciseControl")
-	public int preciseSpeedValue = 5;
-
-	@ConfigEntry.Gui.Tooltip(count = 3)
-	@ConfigEntry.Category("preciseControl")
-	public int preciseSpeedPercentage = 10;
+	@ConfigEntry.Category("customControl")
+	public int customSpeedTwo = 20;
 
 	@Override
 	public void validatePostLoad() throws ValidationException {
-		if (preciseSpeedPercentage <= 0) {
-			throw new ValidationException(String.valueOf(new TranslatableText("Precise Speed Percentage must be an integer above 0.")));
+		if (customSpeedOne <= 0) {
+			throw new ValidationException(String.valueOf(new TranslatableText("Speed value must be an integer above 8.")));
 		}
-		if (preciseSpeedValue <= 0) {
-			throw new ValidationException(String.valueOf(new TranslatableText("Precise Speed Value must be an integer above 0.")));
+		if (customSpeedTwo <= 0) {
+			throw new ValidationException(String.valueOf(new TranslatableText("Speed value must be an integer above 8.")));
 		}
 	}
 }

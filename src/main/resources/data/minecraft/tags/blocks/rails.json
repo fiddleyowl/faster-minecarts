@@ -3,7 +3,7 @@
   "values": [
     "fasterminecarts:acceleration_rail",
     "fasterminecarts:deceleration_rail",
-    "fasterminecarts:precise_acceleration_rail",
-    "fasterminecarts:precise_deceleration_rail"
+    "fasterminecarts:custom_speed_rail_one",
+    "fasterminecarts:custom_speed_rail_two"
   ]
 }
