@@ -10,6 +10,7 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.HopperBlockEntity;
 import net.minecraft.block.enums.RailShape;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.vehicle.AbstractMinecartEntity;
@@ -17,23 +18,19 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
-import org.lwjgl.system.CallbackI;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import com.philipzhan.fasterminecarts.config.FasterMinecartsConfig;
-
-import java.util.ArrayList;
 
 @Mixin(AbstractMinecartEntity.class)
 public abstract class AbstractMinecartEntityMixin extends Entity {
 
 	@Shadow public abstract AbstractMinecartEntity.Type getMinecartType();
 
-	private boolean shouldAccelerate = false;
+	private double shouldAccelerateTo = getDefaultSpeed();
 
 	FasterMinecartsConfig config = AutoConfig.getConfigHolder(FasterMinecartsConfig.class).getConfig();
 
@@ -41,11 +38,13 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 		super(type, world);
 	}
 
-	@Inject(method = "getMaxOffRailSpeed", at = @At("HEAD"), cancellable = true)
+	@Inject(method = "getMaxOffRailSpeed", at = @At("RETURN"), cancellable = true)
 	protected void onGetMaxOffRailSpeed(CallbackInfoReturnable<Double> cir) {
 
 		if(!config.enableMod) {
 			cir.setReturnValue(getDefaultSpeed());
+			System.out.println("Not Enabled.");
+			System.out.println("52 Return value: " + cir.getReturnValue());
 			return;
 		}
 
@@ -57,19 +56,25 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 		if (state.getBlock() instanceof DecelerationRailBlock) {
 			if (state.get(DecelerationRailBlock.POWERED)) {
 				cir.setReturnValue(getDefaultSpeed());
+				System.out.println("Deceleration Rail");
+				System.out.println("65 Return value: " + cir.getReturnValue());
 				return;
 			}
 		}
 
 		// Check 2: Manual slowdown has the second priority.
 		if (config.manualMinecartSlowDown) {
-			if (!(state.getBlock() instanceof AbstractRailBlock) || under instanceof SoulSandBlock) {
+			if (under instanceof SoulSandBlock) {
 				cir.setReturnValue(getDefaultSpeed());
+				System.out.println("Soul Sand");
+				System.out.println("75 Return value: " + cir.getReturnValue());
 				return;
 			}
 
-			if (!(state.getBlock() instanceof AbstractRailBlock) || under instanceof SlimeBlock) {
+			if (under instanceof SlimeBlock) {
 				cir.setReturnValue(getDefaultSpeed());
+				System.out.println("Slime Block");
+				System.out.println("82 Return value: " + cir.getReturnValue());
 				return;
 			}
 		}
@@ -81,6 +86,8 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 				// Return if above hopper block entity
 				if (!(state.getBlock() instanceof AbstractRailBlock) || entity instanceof HopperBlockEntity) {
 					cir.setReturnValue(getDefaultSpeed());
+					System.out.println("Hopper");
+					System.out.println("95 Return value: " + cir.getReturnValue());
 					return;
 				}
 			}
@@ -90,12 +97,6 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 		if (config.automaticMinecartSlowDown) {
 			Vec3d v = this.getVelocity();
 
-			if (Math.abs(v.getX()) < 0.5 && Math.abs(v.getZ()) < 0.5) {
-				// Return early if at a speed where we can't possibly derail.
-				cir.setReturnValue(getMaximumSpeed());
-				return;
-			}
-
 			final int additionalOffset = 1;
 			final int offset = (int) getMaximumSpeed() + additionalOffset;
 
@@ -103,10 +104,13 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 
 				RailShape railShape = state.get(abstractRailBlock.getShapeProperty());
 				Vec3i nextRailOffset = MinecartUtility.getNextRailOffsetByVelocity(railShape, v);
+				// Get next railshape if continuing on current track
 
 				if (nextRailOffset == null) {
-					// it's a curved rail
+					// On a curved rail.
 					cir.setReturnValue(getCornerSpeed());
+					System.out.println("Curved Rail");
+					System.out.println("124 Return value: " + cir.getReturnValue());
 					return;
 				}
 
@@ -118,42 +122,46 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 
 					if (railShapeAtOffset == null) {
 						cir.setReturnValue(getCornerSpeed());
+						System.out.println("Curved Rail");
+						System.out.println("137 Return value: " + cir.getReturnValue());
 						return;
 					}
 
 					switch (railShapeAtOffset) {
-						case SOUTH_EAST:
-						case SOUTH_WEST:
-						case NORTH_WEST:
-						case NORTH_EAST:
+						case SOUTH_EAST, SOUTH_WEST, NORTH_WEST, NORTH_EAST, ASCENDING_EAST, ASCENDING_NORTH, ASCENDING_SOUTH, ASCENDING_WEST -> {
 							cir.setReturnValue(getCornerSpeed());
+							System.out.println("Curved Rail");
+							System.out.println("148 Return value: " + cir.getReturnValue());
 							return;
-						default:
+						}
+						default -> {
+						}
 					}
 				}
 			}
-
 		}
 
 		if (state.getBlock() instanceof AccelerationRailBlock) {
 			if (state.get(AccelerationRailBlock.POWERED)) {
-				cir.setReturnValue(getMaximumSpeed());
-				return;
+				shouldAccelerateTo = getMaximumSpeed();
 			}
 		}
 
 		if (state.getBlock() instanceof CustomSpeedRailOneBlock) {
 			if (state.get(CustomSpeedRailOneBlock.POWERED)) {
-				cir.setReturnValue(getCustomSpeedOne());
-				return;
+				shouldAccelerateTo = getCustomSpeedOne();
 			}
 		}
 
 		if (state.getBlock() instanceof CustomSpeedRailTwoBlock) {
 			if (state.get(CustomSpeedRailTwoBlock.POWERED)) {
-				cir.setReturnValue(getCustomSpeedTwo());
+				shouldAccelerateTo = getCustomSpeedTwo();
 			}
 		}
+
+		cir.setReturnValue(shouldAccelerateTo);
+
+		System.out.println("Fallback Return value: " + cir.getReturnValue());
 
 	}
 
@@ -180,33 +188,5 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 	public double getCornerSpeed() {
 		return 0.3;
 	}
-
-	public double getMinecartSpeed() {
-		return Math.sqrt(Math.pow(this.getVelocity().x,2)+Math.pow(this.getVelocity().y,2)+Math.pow(this.getVelocity().z,2));
-	}
-
-	public double getMinecartPlanarSpeed() {
-		return Math.sqrt(Math.pow(this.getVelocity().x,2)+Math.pow(this.getVelocity().z,2));
-	}
-
-	@Inject(method = "tick", at = @At("TAIL"))
-	protected void tick(CallbackInfo ci) {
-//		System.out.println("tick");
-		BlockPos blockPos = this.getBlockPos();
-		BlockState state = this.world.getBlockState(blockPos);
-		Block under = world.getBlockState(getBlockPos().down()).getBlock();
-		if (under == Blocks.IRON_BLOCK) {
-			System.out.println("Iron Block");
-		}
-
-		if (under == Blocks.GOLD_BLOCK) {
-			System.out.println("Gold Block");
-		}
-
-		if (under == Blocks.DIAMOND_BLOCK) {
-			System.out.println("Diamond Block");
-		}
-	}
-
 
 }

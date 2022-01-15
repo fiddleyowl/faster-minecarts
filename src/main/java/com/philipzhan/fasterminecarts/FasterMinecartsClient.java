@@ -9,6 +9,6 @@ public class FasterMinecartsClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         // For transparency
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), ModBlocks.ACCELERATION_RAIL_BLOCK, ModBlocks.DECELERATION_RAIL_BLOCK);
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), ModBlocks.ACCELERATION_RAIL_BLOCK, ModBlocks.DECELERATION_RAIL_BLOCK, ModBlocks.CUSTOM_SPEED_RAIL_ONE_BLOCK, ModBlocks.CUSTOM_SPEED_RAIL_TWO_BLOCK);
     }
 }
