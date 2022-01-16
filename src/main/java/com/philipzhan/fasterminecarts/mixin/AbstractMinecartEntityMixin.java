@@ -104,17 +104,20 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 
 				RailShape railShape = state.get(abstractRailBlock.getShapeProperty());
 				Vec3i nextRailOffset = MinecartUtility.getNextRailOffsetByVelocity(railShape, v);
-				// Get next railshape if continuing on current track
+				// Next rail offset: valid values are (1,0,0), (-1,0,0), (0,0,1), or (0,0,-1).
 
 				if (nextRailOffset == null) {
-					// On a curved rail.
+					// nextRailOffset is null means current railShape is curved.
 					cir.setReturnValue(getCornerSpeed());
 					System.out.println("Curved Rail");
 					System.out.println("124 Return value: " + cir.getReturnValue());
 					return;
 				}
 
+				// Current railShape is not curved.
+
 				for (int i = 0; i < offset; i++) {
+					// offset: how many blocks you can go in one second.
 					RailShape railShapeAtOffset = null;
 
 					railShapeAtOffset = MinecartUtility.getRailShapeAtOffset(

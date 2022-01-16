@@ -3,6 +3,7 @@
     "modmenu.descriptionTranslation.fasterminecarts": "トロッコの速度をより速くします。",
     "text.autoconfig.fasterminecarts.title": "Faster Minecarts",
     "text.autoconfig.fasterminecarts.category.general": "General",
+    "text.autoconfig.fasterminecarts.category.customControl": "カスタム制御",
     "text.autoconfig.fasterminecarts.category.preciseControl": "正確な制御",
     "text.autoconfig.fasterminecarts.option.enableMod": "Modを有効にする",
     "text.autoconfig.fasterminecarts.option.enableMod.@Tooltip": "Faster Minecarts を有効にする。",
@@ -15,8 +16,16 @@
     "text.autoconfig.fasterminecarts.option.maxSpeed": "最大速度",
     "text.autoconfig.fasterminecarts.option.maxSpeed.@Tooltip[0]": "最大速度を変更します（メートル/秒単位）。",
     "text.autoconfig.fasterminecarts.option.maxSpeed.@Tooltip[1]": "バニラは8、デフォルトは24です。",
+    "text.autoconfig.fasterminecarts.option.customSpeedOne": "カスタム速度1",
+    "text.autoconfig.fasterminecarts.option.customSpeedOne.@Tooltip[0]": "Change the maximum speed of custom speed rail 1.",
+    "text.autoconfig.fasterminecarts.option.customSpeedOne.@Tooltip[1]": "Vanilla value is 8, default value is 10 (in meters per second).",
+    "text.autoconfig.fasterminecarts.option.customSpeedTwo": "カスタム速度2",
+    "text.autoconfig.fasterminecarts.option.customSpeedTwo.@Tooltip[0]": "Change the maximum speed of custom speed rail 2.",
+    "text.autoconfig.fasterminecarts.option.customSpeedTwo.@Tooltip[1]": "Vanilla value is 8, default value is 15 (in meters per second).",
     "block.fasterminecarts.acceleration_rail": "加速レール",
     "block.fasterminecarts.deceleration_rail": "減速レール",
     "block.fasterminecarts.precise_acceleration_rail": "精確な加速レール",
-    "block.fasterminecarts.precise_deceleration_rail": "精確な減速レール"
+    "block.fasterminecarts.precise_deceleration_rail": "精確な減速レール",
+    "block.fasterminecarts.custom_speed_rail_one": "カスタム速度レール1",
+    "block.fasterminecarts.custom_speed_rail_two": "カスタム速度レール2"
 }
