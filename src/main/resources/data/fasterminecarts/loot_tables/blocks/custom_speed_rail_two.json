@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "fasterminecarts:deceleration_rail"
+          "name": "fasterminecarts:custom_speed_rail_two"
         }
       ],
       "conditions": [
