@@ -15,10 +15,10 @@ If you like the thought of building long railways connecting your world together
 This is a forked and remade version of [faster-minecarts](https://www.curseforge.com/minecraft/mc-mods/faster-minecarts) by [neondrp](https://www.curseforge.com/members/neondrp).
 
 ## Features
-* Increases the maximum speed of all vanilla minecarts from 8 m/s to up to 30 m/s.
-* Automatic slowdown on corners to prevent derailing.
-* Acceleration rails and deceleration rails to manually toggle speed.
-* Support for per-block slowing with soul sand blocks, slime blocks, or hoppers (storage minecarts only).
+* Increases the maximum speed of all vanilla minecarts from 8 m/s to up to 30 m/s (Unlimited by custom speed rails but is UNTESTED).
+* Automatic slowdown before corners and hills to prevent derailing or bouncing back.
+* Acceleration rails, deceleration rails, and two more custom speed rails to manually toggle speed.
+* Support for per-block slowing with soul sand blocks, slime blocks, honey blocks, or hoppers (storage minecarts only).
 * Flexible configuration with ModMenu.
 
 ## Recipes
@@ -31,6 +31,9 @@ Feeling expensive? Go to YouTube and find tutorials for duplicating them!
 
 ### Deceleration Rails
 Similar to acceleration rails, replace diamonds with slime balls.
+
+### Custom Speed Rail One
+
 
 ![](https://github.com/fiddleyowl/faster-minecarts/blob/master/Resources/deceleration-rail-recipe.png?raw=true)
 
