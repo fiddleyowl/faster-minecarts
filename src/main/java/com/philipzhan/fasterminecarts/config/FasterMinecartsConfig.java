@@ -16,10 +16,14 @@ public class FasterMinecartsConfig implements ConfigData {
 	@ConfigEntry.Category("general")
     public boolean automaticMinecartSlowDown = true;
 
+	@ConfigEntry.Gui.Tooltip()
+	@ConfigEntry.Category("general")
+	public boolean ascendingSlowdown = true;
+
 	@ConfigEntry.Gui.Tooltip(count = 4)
 	@ConfigEntry.BoundedDiscrete(min = 1, max = 10)
 	@ConfigEntry.Category("general")
-	public int slowdownCheckDistance = 3;
+	public int slowdownCheckDistance = 1;
 
 	@ConfigEntry.Gui.Tooltip()
 	@ConfigEntry.Category("general")

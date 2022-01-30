@@ -42,8 +42,8 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 	protected void onGetMaxOffRailSpeed(CallbackInfoReturnable<Double> cir) {
 
 		if(!config.enableMod) {
-			System.out.println("Not Enabled.");
-			System.out.println("49 Return value: " + cir.getReturnValue());
+//			System.out.println("Not Enabled.");
+//			System.out.println("49 Return value: " + cir.getReturnValue());
 			return;
 		}
 
@@ -56,8 +56,8 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 		// Check 1: Deceleration Rail has the highest priority. This resets all custom settings.
 		if (blockCurrent instanceof DecelerationRailBlock) {
 			if (blockCurrentState.get(DecelerationRailBlock.POWERED)) {
-				System.out.println("Deceleration Rail");
-				System.out.println("63 Return value: " + cir.getReturnValue());
+//				System.out.println("Deceleration Rail");
+//				System.out.println("63 Return value: " + cir.getReturnValue());
 				shouldAccelerate = false;
 				return;
 			}
@@ -66,8 +66,8 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 		// Check 2: Manual slowdown has the second priority.
 		if (config.manualMinecartSlowDown) {
 			if (blockBelow instanceof SoulSandBlock || blockBelow instanceof SlimeBlock || blockBelow instanceof HoneyBlock) {
-				System.out.println("Soul Sand");
-				System.out.println("73 Return value: " + cir.getReturnValue());
+//				System.out.println("Soul Sand");
+//				System.out.println("73 Return value: " + cir.getReturnValue());
 				return;
 			}
 		}
@@ -78,8 +78,8 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 				BlockEntity entity = world.getBlockEntity(getBlockPos().down());
 				// Return if above hopper block entity
 				if (!(blockCurrentState.getBlock() instanceof AbstractRailBlock) || entity instanceof HopperBlockEntity) {
-					System.out.println("Hopper");
-					System.out.println("85 Return value: " + cir.getReturnValue());
+//					System.out.println("Hopper");
+//					System.out.println("85 Return value: " + cir.getReturnValue());
 					return;
 				}
 			}
@@ -103,9 +103,11 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 				RailShape currentRailShape = blockBelowState.get(abstractRailBlock.getShapeProperty());
 				switch (currentRailShape) {
 					case ASCENDING_EAST, ASCENDING_NORTH, ASCENDING_SOUTH, ASCENDING_WEST -> {
-						System.out.println("Ascending Rail");
-						System.out.println("109 Return value: " + cir.getReturnValue());
-						return;
+//						System.out.println("Ascending Rail");
+//						System.out.println("109 Return value: " + cir.getReturnValue());
+						if (config.ascendingSlowdown) {
+							return;
+						}
 					}
 				}
 			}
@@ -116,15 +118,17 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 					case SOUTH_EAST, SOUTH_WEST, NORTH_WEST, NORTH_EAST -> {
 						// Current rail is curved.
 						cir.setReturnValue(getCornerSpeed());
-						System.out.println("Curved Rail");
-						System.out.println("121 Return value: " + cir.getReturnValue());
+//						System.out.println("Curved Rail");
+//						System.out.println("121 Return value: " + cir.getReturnValue());
 						return;
 					}
 					case ASCENDING_EAST, ASCENDING_NORTH, ASCENDING_SOUTH, ASCENDING_WEST -> {
 						// This never calls... Just keep it here.
-						System.out.println("Ascending Rail");
-						System.out.println("132 Return value: " + cir.getReturnValue());
-						return;
+//						System.out.println("Ascending Rail");
+//						System.out.println("132 Return value: " + cir.getReturnValue());
+						if (config.ascendingSlowdown) {
+							return;
+						}
 					}
 				}
 
@@ -142,30 +146,31 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 					railShapeAtOffset = getRailShapeAtOffset(
 							new Vec3i(runningDirection.getX() * i, 0, runningDirection.getZ() * i), blockPosition, this.world);
 
-					System.out.println("Offset: " + i + ", railShapeAtOffset: " + railShapeAtOffset);
+//					System.out.println("Offset: " + i + ", railShapeAtOffset: " + railShapeAtOffset);
 
 					if (railShapeAtOffset == null) {
 						// Sure to derail.
-						System.out.println("Not Rail");
-						System.out.println("167 Return value: " + cir.getReturnValue());
+//						System.out.println("Not Rail");
+//						System.out.println("167 Return value: " + cir.getReturnValue());
 						break derail_check;
 					}
 
 					switch (railShapeAtOffset) {
 						case SOUTH_EAST, SOUTH_WEST, NORTH_WEST, NORTH_EAST -> {
-							System.out.println("Curved Rail");
-							System.out.println("171 Return value: " + cir.getReturnValue());
+//							System.out.println("Curved Rail");
+//							System.out.println("171 Return value: " + cir.getReturnValue());
 							return;
 						}
 						case ASCENDING_EAST, ASCENDING_NORTH, ASCENDING_SOUTH, ASCENDING_WEST -> {
-							System.out.println("Ascending Rail");
-							System.out.println("177 Return value: " + cir.getReturnValue());
-							return;
+//							System.out.println("Ascending Rail");
+//							System.out.println("177 Return value: " + cir.getReturnValue());
+							if (config.ascendingSlowdown) {
+								return;
+							}
 						}
 					}
 				}
 			}
-
 			// This is the end of derail_check if block.
 		}
 
@@ -194,7 +199,7 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 			cir.setReturnValue(shouldAccelerateTo);
 		}
 
-		System.out.println("Final Return value: " + cir.getReturnValue());
+//		System.out.println("Final Return value: " + cir.getReturnValue());
 	}
 
 	public double getDefaultSpeed() {

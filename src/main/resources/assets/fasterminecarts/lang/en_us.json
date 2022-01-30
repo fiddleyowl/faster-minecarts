@@ -8,6 +8,8 @@
     "text.autoconfig.fasterminecarts.option.enableMod.@Tooltip": "Enable faster minecarts.",
     "text.autoconfig.fasterminecarts.option.automaticMinecartSlowDown": "Automatic Slowdown",
     "text.autoconfig.fasterminecarts.option.automaticMinecartSlowDown.@Tooltip": "Enable automatic slowdown to prevent derailing at corners and hills.",
+    "text.autoconfig.fasterminecarts.option.ascendingSlowdown": "Ascending Slowdown",
+    "text.autoconfig.fasterminecarts.option.ascendingSlowdown.@Tooltip": "You can turn off automatic slowdown on hills from here.",
     "text.autoconfig.fasterminecarts.option.slowdownCheckDistance": "Slowdown Check Distance",
     "text.autoconfig.fasterminecarts.option.slowdownCheckDistance.@Tooltip[0]": "The mod needs to check for corners and ascending rails in advance.",
     "text.autoconfig.fasterminecarts.option.slowdownCheckDistance.@Tooltip[1]": "This setting controls the approximate distance for the check.",

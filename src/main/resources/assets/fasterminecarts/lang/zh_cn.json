@@ -8,6 +8,8 @@
     "text.autoconfig.fasterminecarts.option.enableMod.@Tooltip": "启用极速矿车模组。",
     "text.autoconfig.fasterminecarts.option.automaticMinecartSlowDown": "自动减速",
     "text.autoconfig.fasterminecarts.option.automaticMinecartSlowDown.@Tooltip": "防止矿车在拐弯处和上坡处脱轨。",
+    "text.autoconfig.fasterminecarts.option.ascendingSlowdown": "上坡自动减速",
+    "text.autoconfig.fasterminecarts.option.ascendingSlowdown.@Tooltip": "你可以在这里关闭上坡自动减速。",
     "text.autoconfig.fasterminecarts.option.slowdownCheckDistance": "减速距离",
     "text.autoconfig.fasterminecarts.option.slowdownCheckDistance.@Tooltip[0]": "拐弯和上坡之前需要提前将矿车减速，提前的距离由该选项大致确定。",
     "text.autoconfig.fasterminecarts.option.slowdownCheckDistance.@Tooltip[1]": "更高的减速距离会让矿车更早减速。",
