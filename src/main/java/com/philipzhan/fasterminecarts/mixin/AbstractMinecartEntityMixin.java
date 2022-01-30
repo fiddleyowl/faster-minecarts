@@ -4,13 +4,12 @@ import com.philipzhan.fasterminecarts.Blocks.AccelerationRailBlock;
 import com.philipzhan.fasterminecarts.Blocks.CustomSpeedRailOneBlock;
 import com.philipzhan.fasterminecarts.Blocks.CustomSpeedRailTwoBlock;
 import com.philipzhan.fasterminecarts.Blocks.DecelerationRailBlock;
-import com.philipzhan.fasterminecarts.util.MinecartUtility;
+import static com.philipzhan.fasterminecarts.util.MinecartUtility.*;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.HopperBlockEntity;
 import net.minecraft.block.enums.RailShape;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.vehicle.AbstractMinecartEntity;
@@ -54,7 +53,7 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 		BlockState blockBelowState = this.world.getBlockState(blockPosition.down());
 		Block blockBelow = blockBelowState.getBlock();
 
-		// Check 1: Deceleration Rail has the highest priority. This resets minecart to vanilla mode.
+		// Check 1: Deceleration Rail has the highest priority. This resets all custom settings.
 		if (blockCurrent instanceof DecelerationRailBlock) {
 			if (blockCurrentState.get(DecelerationRailBlock.POWERED)) {
 				System.out.println("Deceleration Rail");
@@ -89,82 +88,67 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 		// Check 3: Prevent derailing has the third priority.
 		derail_check:
 		if (config.automaticMinecartSlowDown) {
-			Vec3d v = this.getVelocity();
+			Vec3d minecartVelocity = this.getVelocity();
 
-			if (Math.abs(v.getX()) < 0.5 && Math.abs(v.getZ()) < 0.5) {
+			if (Math.abs(minecartVelocity.getX()) < 0.5 && Math.abs(minecartVelocity.getZ()) < 0.5) {
 				// Speed is too low, no need to check for derailing.
 				break derail_check;
 			}
 
-			System.out.println(v);
+			final int checkDistance = (int) getMaximumSpeed() + config.slowdownCheckDistance;
 
-			int additionalOffset = 1;
-
-			if (config.automaticAscendingSlowDown) {
-				// additionalOffset determines how many blocks ahead to check.
-				// To prevent bouncing back by ascending rails, check distance must be higher.
-				// This number can be changed from mod settings.
-				additionalOffset += config.ascendingSlowDownCheckDistance;
+			if (blockCurrent instanceof AirBlock && blockBelow instanceof AbstractRailBlock abstractRailBlock) {
+				// Current is air, block below is rail, we are moving, this probably means we are going up or down.
+				// getVelocity() returned velocity y values are always 0.2 or something, regardless of the true minecart moving status.
+				RailShape currentRailShape = blockBelowState.get(abstractRailBlock.getShapeProperty());
+				switch (currentRailShape) {
+					case ASCENDING_EAST, ASCENDING_NORTH, ASCENDING_SOUTH, ASCENDING_WEST -> {
+						System.out.println("Ascending Rail");
+						System.out.println("109 Return value: " + cir.getReturnValue());
+						return;
+					}
+				}
 			}
 
-
-			final int offset = (int) getMaximumSpeed() + additionalOffset;
-
-			System.out.println("Current block: " + blockCurrent.getName().toString());
-			System.out.println("Block below: " + blockBelow.getName().toString());
-
 			if (blockCurrent instanceof AbstractRailBlock abstractRailBlock) {
-				RailShape railShape = blockCurrentState.get(abstractRailBlock.getShapeProperty());
-				switch (railShape) {
+				RailShape currentRailShape = blockCurrentState.get(abstractRailBlock.getShapeProperty());
+				switch (currentRailShape) {
 					case SOUTH_EAST, SOUTH_WEST, NORTH_WEST, NORTH_EAST -> {
+						// Current rail is curved.
 						cir.setReturnValue(getCornerSpeed());
 						System.out.println("Curved Rail");
-						System.out.println("127 Return value: " + cir.getReturnValue());
+						System.out.println("121 Return value: " + cir.getReturnValue());
 						return;
 					}
 					case ASCENDING_EAST, ASCENDING_NORTH, ASCENDING_SOUTH, ASCENDING_WEST -> {
+						// This never calls... Just keep it here.
 						System.out.println("Ascending Rail");
 						System.out.println("132 Return value: " + cir.getReturnValue());
 						return;
 					}
 				}
 
-//				Vec3i nextRailOffset = MinecartUtility.getNextRailOffsetByVelocity(railShape, v);
-//				// Next rail offset: valid values are (1,0,0), (-1,0,0), (0,0,1), or (0,0,-1).
-//
-//				System.out.println(nextRailOffset);
-//
-//				if (nextRailOffset == null) {
-//					// nextRailOffset is null means current railShape is curved.
-//
-//				}
+				// Current rail is not curved.
 
-				// Current railShape is not curved.
+				Vec3i runningDirection = getMinecartRunningDirection(currentRailShape, minecartVelocity);
 
-				Vec3i nextRailOffset = MinecartUtility.getNextRailOffsetByVelocity(railShape, v);
+				for (int i = 0; i < checkDistance; i++) {
+					RailShape railShapeAtOffset;
 
-				if (nextRailOffset == null) {
-					// Should not happen because "current rail is curved" is already short-circuited. Just in case.
-					cir.setReturnValue(getCornerSpeed());
-					System.out.println("Curved Rail");
-					System.out.println("151 Return value: " + cir.getReturnValue());
-					return;
-				}
+					if (runningDirection == null) {
+						return;
+					}
 
-				for (int i = 0; i < offset; i++) {
-					// offset: how many blocks you can go in one second.
-					RailShape railShapeAtOffset = null;
+					railShapeAtOffset = getRailShapeAtOffset(
+							new Vec3i(runningDirection.getX() * i, 0, runningDirection.getZ() * i), blockPosition, this.world);
 
-					railShapeAtOffset = MinecartUtility.getRailShapeAtOffset(
-							new Vec3i(nextRailOffset.getX() * i, 0, nextRailOffset.getZ() * i), blockPosition, this.world);
 
 					System.out.println("Offset: " + i + ", railShapeAtOffset: " + railShapeAtOffset);
 
 					if (railShapeAtOffset == null) {
-						cir.setReturnValue(getCornerSpeed());
-						System.out.println("Curved Rail");
+						System.out.println("Not Rail");
 						System.out.println("167 Return value: " + cir.getReturnValue());
-						return;
+						break derail_check;
 					}
 
 					switch (railShapeAtOffset) {
@@ -182,18 +166,7 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 				}
 			}
 
-			if (blockCurrent instanceof AirBlock && blockBelow instanceof AbstractRailBlock abstractRailBlock) {
-				RailShape railShape = blockBelowState.get(abstractRailBlock.getShapeProperty());
-				switch (railShape) {
-					case ASCENDING_EAST, ASCENDING_NORTH, ASCENDING_SOUTH, ASCENDING_WEST -> {
-						// Current is air, block below is rail, we are moving, this probably means we are going up or down.
-						// getVelocity() returned velocity y values are always 0.2 or something, regardless of the true minecart moving status.
-						System.out.println("Ascending Rail");
-						System.out.println("193 Return value: " + cir.getReturnValue());
-						return;
-					}
-				}
-			}
+			// This is the end of derail_check if block.
 		}
 
 		if (blockCurrentState.getBlock() instanceof AccelerationRailBlock) {

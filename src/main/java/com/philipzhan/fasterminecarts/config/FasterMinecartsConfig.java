@@ -17,13 +17,9 @@ public class FasterMinecartsConfig implements ConfigData {
     public boolean automaticMinecartSlowDown = true;
 
 	@ConfigEntry.Gui.Tooltip()
-	@ConfigEntry.Category("general")
-	public boolean automaticAscendingSlowDown = true;
-
-	@ConfigEntry.Gui.Tooltip()
 	@ConfigEntry.BoundedDiscrete(min = 1, max = 20)
 	@ConfigEntry.Category("general")
-	public int ascendingSlowDownCheckDistance = 3;
+	public int slowdownCheckDistance = 3;
 
 	@ConfigEntry.Gui.Tooltip()
 	@ConfigEntry.Category("general")
@@ -49,10 +45,10 @@ public class FasterMinecartsConfig implements ConfigData {
 	@Override
 	public void validatePostLoad() throws ValidationException {
 		if (customSpeedOne <= 0) {
-			throw new ValidationException(String.valueOf(new TranslatableText("Speed value must be an integer above 8.")));
+			throw new ValidationException(String.valueOf(new TranslatableText("Speed value must be an integer above 0.")));
 		}
 		if (customSpeedTwo <= 0) {
-			throw new ValidationException(String.valueOf(new TranslatableText("Speed value must be an integer above 8.")));
+			throw new ValidationException(String.valueOf(new TranslatableText("Speed value must be an integer above 0.")));
 		}
 	}
 }

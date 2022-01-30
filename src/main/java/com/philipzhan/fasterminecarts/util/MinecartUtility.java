@@ -9,26 +9,30 @@ import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 
 public class MinecartUtility {
-	/*
-	 * Returns null if the block at the given offset is not a rail
+	/**
+	 * Gets the rail shape at a given block position, based on a given block and an offset.
+	 * @param blockOffset Block offset given in Vec3i.
+	 * @param blockPos Block position to apply offset to.
+	 * @param world The current Minecraft world.
+	 * @return Returns the rail shape at the given block position, null if that block is not a rail.
 	 */
-	public static RailShape getRailShapeAtOffset(Vec3i railOffset, BlockPos blockPos, World world) {
+	public static RailShape getRailShapeAtOffset(Vec3i blockOffset, BlockPos blockPos, World world) {
+		BlockState blockState = world.getBlockState(blockPos.add(blockOffset));
 		
-		BlockState state = world.getBlockState(blockPos.add(railOffset));
-		
-		if (state.getBlock() instanceof AbstractRailBlock) {
-			AbstractRailBlock abstractRailBlock = (AbstractRailBlock)state.getBlock();
-			RailShape railShape = (RailShape) state.get(abstractRailBlock.getShapeProperty());
-			return railShape;
+		if (blockState.getBlock() instanceof AbstractRailBlock abstractRailBlock) {
+			return blockState.get(abstractRailBlock.getShapeProperty());
 		} else {
 			return null;
 		}
 	}
-	
-	/*
-	 * Returns null if the rail is a curved rail
+
+	/**
+	 * Gets the running direction of a minecart, given in Vec3i.
+	 * @param railShape Rail shape where the minecart is on. Should not be a curved rail or an ascending rail.
+	 * @param velocity Current minecart velocity, in Vec3d.
+	 * @return Returns a Vec3i denoting the running direction. Valid return values are (+-1, 0, +-1). Only one number can be non-zero. Returns null if the given rail is curved or ascending.
 	 */
-	public static Vec3i getNextRailOffsetByVelocity(RailShape railShape, Vec3d velocity) {
+	public static Vec3i getMinecartRunningDirection(RailShape railShape, Vec3d velocity) {
 		
 		if (railShape == RailShape.EAST_WEST) {
 			double x = velocity.getX();
