@@ -142,10 +142,10 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 					railShapeAtOffset = getRailShapeAtOffset(
 							new Vec3i(runningDirection.getX() * i, 0, runningDirection.getZ() * i), blockPosition, this.world);
 
-
 					System.out.println("Offset: " + i + ", railShapeAtOffset: " + railShapeAtOffset);
 
 					if (railShapeAtOffset == null) {
+						// Sure to derail.
 						System.out.println("Not Rail");
 						System.out.println("167 Return value: " + cir.getReturnValue());
 						break derail_check;
