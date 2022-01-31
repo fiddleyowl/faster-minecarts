@@ -22,14 +22,14 @@
     "text.autoconfig.fasterminecarts.option.maxSpeed": "最高速度",
     "text.autoconfig.fasterminecarts.option.maxSpeed.@Tooltip[0]": "调整加速轨道最高可加速到的速度。",
     "text.autoconfig.fasterminecarts.option.maxSpeed.@Tooltip[1]": "原版值为8，默认值为24 (米每秒)。",
-    "text.autoconfig.fasterminecarts.option.customSpeedOne": "自定义速度 1",
-    "text.autoconfig.fasterminecarts.option.customSpeedOne.@Tooltip[0]": "调整自定义速度轨道1可加速到的速度。",
+    "text.autoconfig.fasterminecarts.option.customSpeedOne": "青金石轨道速度",
+    "text.autoconfig.fasterminecarts.option.customSpeedOne.@Tooltip[0]": "调整青金石轨道可加速到的速度。",
     "text.autoconfig.fasterminecarts.option.customSpeedOne.@Tooltip[1]": "原版值为8，默认值为15 (米每秒)。",
-    "text.autoconfig.fasterminecarts.option.customSpeedTwo": "自定义速度 2",
-    "text.autoconfig.fasterminecarts.option.customSpeedTwo.@Tooltip[0]": "调整自定义速度轨道2可加速到的速度。",
+    "text.autoconfig.fasterminecarts.option.customSpeedTwo": "铜轨道速度",
+    "text.autoconfig.fasterminecarts.option.customSpeedTwo.@Tooltip[0]": "调整铜轨道可加速到的速度。",
     "text.autoconfig.fasterminecarts.option.customSpeedTwo.@Tooltip[1]": "原版值为8，默认值为20 (米每秒)。",
     "block.fasterminecarts.acceleration_rail": "加速轨道",
     "block.fasterminecarts.deceleration_rail": "减速轨道",
-    "block.fasterminecarts.custom_speed_rail_one": "自定义速度轨道 1",
-    "block.fasterminecarts.custom_speed_rail_two": "自定义速度轨道 2"
+    "block.fasterminecarts.custom_speed_rail_one": "青金石轨道",
+    "block.fasterminecarts.custom_speed_rail_two": "铜轨道"
 }

@@ -30,6 +30,6 @@
     "text.autoconfig.fasterminecarts.option.customSpeedTwo.@Tooltip[1]": "Vanilla value is 8, default value is 20 (in meters per second).",
     "block.fasterminecarts.acceleration_rail": "加速レール",
     "block.fasterminecarts.deceleration_rail": "減速レール",
-    "block.fasterminecarts.custom_speed_rail_one": "カスタム速度レール1",
-    "block.fasterminecarts.custom_speed_rail_two": "カスタム速度レール2"
+    "block.fasterminecarts.custom_speed_rail_one": "Lapis Lazuli Rail",
+    "block.fasterminecarts.custom_speed_rail_two": "Copper Rail"
 }
