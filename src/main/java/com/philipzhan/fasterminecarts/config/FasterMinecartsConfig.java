@@ -39,12 +39,12 @@ public class FasterMinecartsConfig implements ConfigData {
     public int maxSpeed = 24;
 
 	@ConfigEntry.Gui.Tooltip(count = 2)
-	@ConfigEntry.BoundedDiscrete(min = 1, max = 30)
+//	@ConfigEntry.BoundedDiscrete(min = 1, max = 30)
 	@ConfigEntry.Category("customControl")
 	public int customSpeedOne = 15;
 
 	@ConfigEntry.Gui.Tooltip(count = 2)
-	@ConfigEntry.BoundedDiscrete(min = 1, max = 30)
+//	@ConfigEntry.BoundedDiscrete(min = 1, max = 30)
 	@ConfigEntry.Category("customControl")
 	public int customSpeedTwo = 20;
 

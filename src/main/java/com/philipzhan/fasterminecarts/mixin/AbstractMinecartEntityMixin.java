@@ -21,6 +21,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import com.philipzhan.fasterminecarts.config.FasterMinecartsConfig;
 
@@ -199,9 +201,17 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 			cir.setReturnValue(shouldAccelerateTo);
 		}
 
-//		System.out.println("Final Return value: " + cir.getReturnValue());
+		System.out.println("Final Return value: " + cir.getReturnValue());
+		System.out.println("Minecart speed: " + getVelocity());
 	}
 
+	@ModifyVariable(method = "moveOnRail", at = @At("STORE"), name = "l")
+	private double injectedMoveOnRail(double l) {
+		Vec3d vec3d2 = this.getVelocity();
+//		return Math.min(100.0, vec3d2.horizontalLength());
+		return vec3d2.horizontalLength();
+	}
+	
 	public double getDefaultSpeed() {
 		if (this.getMinecartType().equals(AbstractMinecartEntity.Type.FURNACE)) {
 			return (this.isTouchingWater() ? 3.0D : 4.0D) / 20.0D;
