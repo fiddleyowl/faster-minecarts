@@ -49,12 +49,14 @@ public class FasterMinecartsConfig implements ConfigData {
 	public int customSpeedTwo = 20;
 
 	@Override
-	public void validatePostLoad() throws ValidationException {
+	public void validatePostLoad() {
 		if (customSpeedOne <= 0) {
-			throw new ValidationException(String.valueOf(new TranslatableText("Speed value must be an integer above 0.")));
+			customSpeedOne = 1;
+//			throw new ValidationException(String.valueOf(new TranslatableText("Speed value must be an integer above 0.")));
 		}
 		if (customSpeedTwo <= 0) {
-			throw new ValidationException(String.valueOf(new TranslatableText("Speed value must be an integer above 0.")));
+			customSpeedTwo = 1;
+//			throw new ValidationException(String.valueOf(new TranslatableText("Speed value must be an integer above 0.")));
 		}
 	}
 }
