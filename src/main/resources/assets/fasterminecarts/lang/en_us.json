@@ -25,7 +25,7 @@
     "text.autoconfig.fasterminecarts.option.customSpeedOne": "Lapis Lazuli Rail Speed",
     "text.autoconfig.fasterminecarts.option.customSpeedOne.@Tooltip[0]": "Change the maximum speed set by lapis lazuli rails.",
     "text.autoconfig.fasterminecarts.option.customSpeedOne.@Tooltip[1]": "Vanilla value is 8, default value is 15 (in meters per second).",
-    "text.autoconfig.fasterminecarts.option.customSpeedTwo": "Custom Speed 2",
+    "text.autoconfig.fasterminecarts.option.customSpeedTwo": "Copper Rail Speed",
     "text.autoconfig.fasterminecarts.option.customSpeedTwo.@Tooltip[0]": "Change the maximum speed set by copper rails.",
     "text.autoconfig.fasterminecarts.option.customSpeedTwo.@Tooltip[1]": "Vanilla value is 8, default value is 20 (in meters per second).",
     "block.fasterminecarts.acceleration_rail": "Acceleration Rail",
