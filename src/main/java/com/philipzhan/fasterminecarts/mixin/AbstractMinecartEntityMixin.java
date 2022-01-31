@@ -205,7 +205,7 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 		System.out.println("Minecart speed: " + getVelocity());
 	}
 
-	@ModifyVariable(method = "moveOnRail", at = @At("STORE"), name = "l")
+	@ModifyVariable(method = "moveOnRail", at = @At("STORE"), ordinal = 8)
 	private double injectedMoveOnRail(double l) {
 		// At line 445 or something there's a strange limit of 2.0. 2.0 is equivalent to 30 m/s. This probably is the reason why minecarts can't reach above 30 m/s using just getMaxOffRailSpeed.
 		Vec3d vec3d2 = this.getVelocity();
@@ -222,15 +222,27 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 	}
 
 	public double getMaximumSpeed() {
-		return config.maxSpeed / 20.0D;
+		if (config.maxSpeed <= 0) {
+			return getDefaultSpeed();
+		} else {
+			return config.maxSpeed / 20.0D;
+		}
 	}
 
 	public double getCustomSpeedOne() {
-		return config.customSpeedOne / 20.0D;
+		if (config.customSpeedOne <= 0) {
+			return getDefaultSpeed();
+		} else {
+			return config.customSpeedOne / 20.0D;
+		}
 	}
 
 	public double getCustomSpeedTwo() {
-		return config.customSpeedTwo / 20.0D;
+		if (config.customSpeedTwo <= 0) {
+			return getDefaultSpeed();
+		} else {
+			return config.customSpeedTwo / 20.0D;
+		}
 	}
 
 	public double getCornerSpeed() {
