@@ -152,9 +152,10 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 
 					if (railShapeAtOffset == null) {
 						// Sure to derail.
+						// Might be the end of one track, might be a downhill.
 //						System.out.println("Not Rail");
 //						System.out.println("167 Return value: " + cir.getReturnValue());
-						break derail_check;
+						return;
 					}
 
 					switch (railShapeAtOffset) {
@@ -201,8 +202,8 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 			cir.setReturnValue(shouldAccelerateTo);
 		}
 
-		System.out.println("Final Return value: " + cir.getReturnValue());
-		System.out.println("Minecart speed: " + getVelocity());
+//		System.out.println("Final Return value: " + cir.getReturnValue());
+//		System.out.println("Minecart speed: " + getVelocity());
 	}
 
 	@ModifyVariable(method = "moveOnRail", at = @At("STORE"), ordinal = 8)
