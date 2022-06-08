@@ -15,7 +15,7 @@ public abstract class FurnaceMinecartEntityMixin extends AbstractMinecartEntityM
 		super(type, world);
 	}
 	
-	@Inject(method = "getMaxOffRailSpeed", at = @At("HEAD"), cancellable = true)
+	@Inject(method = "getMaxSpeed", at = @At("HEAD"), cancellable = true)
 	protected void onGetMaxOffRailSpeed(CallbackInfoReturnable<Double> cir) {
 		super.onGetMaxOffRailSpeed(cir);
 	}
