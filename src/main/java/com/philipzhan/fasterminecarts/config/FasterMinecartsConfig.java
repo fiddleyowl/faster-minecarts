@@ -3,7 +3,7 @@ package com.philipzhan.fasterminecarts.config;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
-import net.minecraft.text.TranslatableText;
+// import net.minecraft.text.TranslatableText;
 
 @Config(name = "fasterminecarts")
 public class FasterMinecartsConfig implements ConfigData {
