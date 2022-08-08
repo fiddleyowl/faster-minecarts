@@ -186,14 +186,16 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 
 		if (blockCurrentState.getBlock() instanceof CustomSpeedRailOneBlock) {
 			if (blockCurrentState.get(CustomSpeedRailOneBlock.POWERED)) {
-				shouldAccelerate = true;
+				// shouldAccelerate = true;
+				// Mod mechanism change: Should pass through acceleration rail first to enable acceleration.
 				shouldAccelerateTo = getCustomSpeedOne();
 			}
 		}
 
 		if (blockCurrentState.getBlock() instanceof CustomSpeedRailTwoBlock) {
 			if (blockCurrentState.get(CustomSpeedRailTwoBlock.POWERED)) {
-				shouldAccelerate = true;
+				// shouldAccelerate = true;
+				// Mod mechanism change: Should pass through acceleration rail first to enable acceleration.
 				shouldAccelerateTo = getCustomSpeedTwo();
 			}
 		}
