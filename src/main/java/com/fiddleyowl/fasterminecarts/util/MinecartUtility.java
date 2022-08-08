@@ -1,4 +1,4 @@
-package com.philipzhan.fasterminecarts.util;
+package com.fiddleyowl.fasterminecarts.util;
 
 import net.minecraft.block.AbstractRailBlock;
 import net.minecraft.block.BlockState;

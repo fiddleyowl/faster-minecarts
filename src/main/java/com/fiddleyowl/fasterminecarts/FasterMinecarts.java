@@ -1,9 +1,9 @@
-package com.philipzhan.fasterminecarts;
+package com.fiddleyowl.fasterminecarts;
 
-import com.philipzhan.fasterminecarts.config.FasterMinecartsConfig;
+import com.fiddleyowl.fasterminecarts.config.FasterMinecartsConfig;
 
-import com.philipzhan.fasterminecarts.registry.ModBlocks;
-import com.philipzhan.fasterminecarts.registry.ModItems;
+import com.fiddleyowl.fasterminecarts.registry.ModBlocks;
+import com.fiddleyowl.fasterminecarts.registry.ModItems;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;

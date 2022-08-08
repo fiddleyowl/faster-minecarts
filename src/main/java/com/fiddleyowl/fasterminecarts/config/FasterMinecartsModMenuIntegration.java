@@ -1,4 +1,4 @@
-package com.philipzhan.fasterminecarts.config;
+package com.fiddleyowl.fasterminecarts.config;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;

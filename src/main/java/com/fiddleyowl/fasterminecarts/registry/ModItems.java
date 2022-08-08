@@ -1,4 +1,4 @@
-package com.philipzhan.fasterminecarts.registry;
+package com.fiddleyowl.fasterminecarts.registry;
 
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -7,7 +7,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 
-import static com.philipzhan.fasterminecarts.SupportingFiles.PublicDefinitions.modId;
+import static com.fiddleyowl.fasterminecarts.SupportingFiles.PublicDefinitions.modId;
 
 public class ModItems {
 

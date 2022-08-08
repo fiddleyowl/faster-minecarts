@@ -1,4 +1,4 @@
-package com.philipzhan.fasterminecarts.Blocks;
+package com.fiddleyowl.fasterminecarts.Blocks;
 
 import net.minecraft.block.PoweredRailBlock;
 

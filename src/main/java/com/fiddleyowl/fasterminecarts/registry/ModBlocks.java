@@ -1,15 +1,15 @@
-package com.philipzhan.fasterminecarts.registry;
+package com.fiddleyowl.fasterminecarts.registry;
 
-import com.philipzhan.fasterminecarts.Blocks.CustomSpeedRailOneBlock;
-import com.philipzhan.fasterminecarts.Blocks.AccelerationRailBlock;
-import com.philipzhan.fasterminecarts.Blocks.CustomSpeedRailTwoBlock;
-import com.philipzhan.fasterminecarts.Blocks.DecelerationRailBlock;
+import com.fiddleyowl.fasterminecarts.Blocks.CustomSpeedRailOneBlock;
+import com.fiddleyowl.fasterminecarts.Blocks.AccelerationRailBlock;
+import com.fiddleyowl.fasterminecarts.Blocks.CustomSpeedRailTwoBlock;
+import com.fiddleyowl.fasterminecarts.Blocks.DecelerationRailBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-import static com.philipzhan.fasterminecarts.SupportingFiles.PublicDefinitions.modId;
+import static com.fiddleyowl.fasterminecarts.SupportingFiles.PublicDefinitions.modId;
 
 public class ModBlocks {
     public static final Block ACCELERATION_RAIL_BLOCK = new AccelerationRailBlock(FabricBlockSettings.copyOf(Blocks.POWERED_RAIL).nonOpaque());

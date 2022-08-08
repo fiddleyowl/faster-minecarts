@@ -1,4 +1,4 @@
-package com.philipzhan.fasterminecarts.mixin;
+package com.fiddleyowl.fasterminecarts.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -15,8 +15,8 @@ public abstract class FurnaceMinecartEntityMixin extends AbstractMinecartEntityM
 		super(type, world);
 	}
 	
-	@Inject(method = "getMaxOffRailSpeed", at = @At("HEAD"), cancellable = true)
-	protected void onGetMaxOffRailSpeed(CallbackInfoReturnable<Double> cir) {
-		super.onGetMaxOffRailSpeed(cir);
+	@Inject(method = "getMaxSpeed", at = @At("HEAD"), cancellable = true)
+	protected void getMaxSpeed(CallbackInfoReturnable<Double> cir) {
+		super.getMaxSpeed(cir);
 	}
 }

@@ -6,7 +6,7 @@
   "name": "Faster Minecarts",
   "description": "Increases the speed of minecarts.",
   "authors": [
-    "Philip",
+    "fiddleyowl",
     "ndrp"
   ],
   "contact": {
@@ -21,13 +21,13 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.philipzhan.fasterminecarts.FasterMinecarts"
+      "com.fiddleyowl.fasterminecarts.FasterMinecarts"
     ],
     "client": [
-      "com.philipzhan.fasterminecarts.FasterMinecartsClient"
+      "com.fiddleyowl.fasterminecarts.FasterMinecartsClient"
     ],
     "modmenu": [
-      "com.philipzhan.fasterminecarts.config.FasterMinecartsModMenuIntegration"
+      "com.fiddleyowl.fasterminecarts.config.FasterMinecartsModMenuIntegration"
     ]
   },
   "mixins": [
@@ -35,8 +35,8 @@
   ],
 
   "depends": {
-    "fabricloader": ">=0.12.12",
-    "minecraft": "1.18.x",
+    "fabricloader": ">=0.14.9",
+    "minecraft": "1.19.x",
     "cloth-config2": "*"
   },
   "suggests": {

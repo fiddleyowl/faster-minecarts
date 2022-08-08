@@ -1,10 +1,10 @@
-package com.philipzhan.fasterminecarts.mixin;
+package com.fiddleyowl.fasterminecarts.mixin;
 
-import com.philipzhan.fasterminecarts.Blocks.AccelerationRailBlock;
-import com.philipzhan.fasterminecarts.Blocks.CustomSpeedRailOneBlock;
-import com.philipzhan.fasterminecarts.Blocks.CustomSpeedRailTwoBlock;
-import com.philipzhan.fasterminecarts.Blocks.DecelerationRailBlock;
-import static com.philipzhan.fasterminecarts.util.MinecartUtility.*;
+import com.fiddleyowl.fasterminecarts.Blocks.AccelerationRailBlock;
+import com.fiddleyowl.fasterminecarts.Blocks.CustomSpeedRailOneBlock;
+import com.fiddleyowl.fasterminecarts.Blocks.CustomSpeedRailTwoBlock;
+import com.fiddleyowl.fasterminecarts.Blocks.DecelerationRailBlock;
+import static com.fiddleyowl.fasterminecarts.util.MinecartUtility.*;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -24,7 +24,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import com.philipzhan.fasterminecarts.config.FasterMinecartsConfig;
+import com.fiddleyowl.fasterminecarts.config.FasterMinecartsConfig;
 
 @Mixin(AbstractMinecartEntity.class)
 public abstract class AbstractMinecartEntityMixin extends Entity {
@@ -40,8 +40,8 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 		super(type, world);
 	}
 
-	@Inject(method = "getMaxOffRailSpeed", at = @At("RETURN"), cancellable = true)
-	protected void onGetMaxOffRailSpeed(CallbackInfoReturnable<Double> cir) {
+	@Inject(method = "getMaxSpeed", at = @At("RETURN"), cancellable = true)
+	protected void getMaxSpeed(CallbackInfoReturnable<Double> cir) {
 
 		if(!config.enableMod) {
 //			System.out.println("Not Enabled.");
