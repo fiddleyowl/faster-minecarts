@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+//import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import com.fiddleyowl.fasterminecarts.config.FasterMinecartsConfig;
 
@@ -210,7 +210,7 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 
 	@ModifyVariable(method = "moveOnRail", at = @At("STORE"), ordinal = 8)
 	private double injectedMoveOnRail(double l) {
-		// At line 445 or something there's a strange limit of 2.0. 2.0 is equivalent to 30 m/s. This probably is the reason why minecarts can't reach above 30 m/s using just getMaxOffRailSpeed.
+		// At line 445 or something there's a strange limit of 2.0. 2.0 is equivalent to 30 m/s. This probably is the reason why minecarts can't reach above 30 m/s using just getMaxSpeed.
 		Vec3d vec3d2 = this.getVelocity();
 //		return Math.min(100.0, vec3d2.horizontalLength());
 		return vec3d2.horizontalLength();
